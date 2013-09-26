@@ -86,14 +86,14 @@ def fermat(n, security):
 # 			return False
 # 	return True
 
-def egcd(a, b):
-    if a == 0:
-        return (b, 0, 1)
-    else:
-        g, y, x = egcd(b % a, a)
-        return (g, x - (b // a) * y, y)
+def pulverizer(a, b):
+    x,y, u,v = 0,1, 1,0
+    while a != 0:
+        q,r = b//a,b%a; m,n = x-u*q,y-v*q
+        b,a, x,y, u,v = a,r, u,v, m,n
+    return b, x, y
 
-def modinv(a, m):
+def modularInverse(a, m):
     g, x, y = egcd(a, m)
     if g != 1:
         raise Exception('modular inverse does not exist')
@@ -112,7 +112,7 @@ def createRSAKeyPair(bitSize):
 	n = p * q
 	phi = (p - 1) * (q - 1)
 	e = coprimeTo(phi)
-	d = modinv(e, phi)
+	d = modularInverse(e, phi)
 	print n
 	print e
 	print d
