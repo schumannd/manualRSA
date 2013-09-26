@@ -31,7 +31,6 @@ def writeUsageInfo():
 		"""
 
 def encryptAndGenerateKey(text, bitsize):
-	print bitsize
 	keyPair = createRSAKeyPair(bitsize)
 	writeKeysToFile(keyPair)
 	encrypt(text, keyPair[1], keyPair[0])
@@ -114,9 +113,6 @@ def createRSAKeyPair(bitSize):
 	phi = (p - 1) * (q - 1)
 	e = coprimeTo(phi)
 	d = modularInverse(e, phi)
-	print n
-	print e
-	print d
 	return [n, e, d]
 
 def coprimeTo(num):
