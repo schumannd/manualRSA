@@ -6,8 +6,7 @@ a python tool to manually encrypt a text file character by character using the R
 
 usage
 =====
-create key and encrypt:
-
+		create key and encrypt:
 		python manualRSA.py -key [keySize] [/path/to/clearTextFile]
 
 		decryption:
